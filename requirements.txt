@@ -1,0 +1,6 @@
+click==7.1.2
+pyfiglet==0.8.post1
+colored==1.4.2
+fastapi==0.58.0
+uvicorn==0.11.5
+pydantic==1.5.1
