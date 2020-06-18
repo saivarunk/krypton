@@ -24,17 +24,13 @@ from krypton.core.settings import settings
 
 @click.group()
 def cli():
-    '''
-    This is the root cli object
-    '''
+    """ This is the root cli object """
     pass
 
 
 @click.command()
 def server():
-    '''
-    Start the krypton web server
-    '''
+    """ Start the krypton web server """
     # Todo - Migrate Krypton Bootup figlet to fastapi hooks
     print(stylize(pyfiglet.figlet_format("krypton", font="slant"), colored.fg("cyan")))
     print(stylize("Model Server for ML and DL Models built with FastAPI", colored.fg("cyan")))
