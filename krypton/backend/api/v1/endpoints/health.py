@@ -23,7 +23,5 @@ router = APIRouter()
 
 @router.get("/health", response_model=HealthCheckResponse)
 def read_items() -> Any:
-    """
-    Simple Health Check Endpoint.
-    """
+    """Simple Health Check Endpoint."""
     return {"status": "Healthy"}
