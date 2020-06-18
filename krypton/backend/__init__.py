@@ -1,4 +1,4 @@
-"""This module exports krypton backend app callable."""
+"""backend module exports krypton backend app callable."""
 
 from .main import app
 
