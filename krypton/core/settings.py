@@ -12,7 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-from pydantic import BaseSettings, PostgresDsn, validator
+from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):

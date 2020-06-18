@@ -13,7 +13,6 @@
 #  limitations under the License.
 
 # Main Bootstrapper for krypton backend server
-import uvicorn
 
 from fastapi import FastAPI
 
