@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     DEBUG: bool = True
 
     class Config:
+        """This class is used to configure env reading parameters"""
         env_prefix = 'KRYPTON'
         case_sensitive = True
 
