@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = 'krypton'
     APP_PORT: int = 7000
     APP_HOSTNAME: str = '0.0.0.0'
+    APP_ROOT: str = '~/krypton'
     LOG_LEVEL: str = 'info'
     DEBUG: bool = True
 
