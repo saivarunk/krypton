@@ -12,20 +12,12 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-# Main Bootstrapper for krypton backend server
+import colored
+import pyfiglet
 
-from fastapi import FastAPI
+from colored import stylize
 
-from krypton.core.settings import settings
-from krypton.core.scripts import setup_krypton
-from krypton.backend.api.v1.api import api_router
 
-app = FastAPI(
-    title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
-)
-
-# add startup and cleanup events
-app.add_event_handler("startup", setup_krypton())
-
-# add router
-app.include_router(api_router, prefix=settings.API_V1_STR)
+def bootup_figlet():
+    print(stylize(pyfiglet.figlet_format("krypton", font="slant"), colored.fg("cyan")))
+    print(stylize("Model Server for ML and DL Models built with FastAPI", colored.fg("cyan")))

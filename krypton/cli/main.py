@@ -13,13 +13,10 @@
 #  limitations under the License.
 
 import click
-import colored
-import pyfiglet
 import uvicorn
 
-from colored import stylize
-
 from krypton.core.settings import settings
+from krypton.core.utils import bootup_figlet
 
 
 @click.group()
@@ -31,9 +28,8 @@ def cli():
 @click.command()
 def server():
     """Start the krypton web server"""
-    # Todo - Migrate Krypton Bootup figlet to fastapi hooks
-    print(stylize(pyfiglet.figlet_format("krypton", font="slant"), colored.fg("cyan")))
-    print(stylize("Model Server for ML and DL Models built with FastAPI", colored.fg("cyan")))
+    # Show booting figlet
+    bootup_figlet()
     # Start FastAPI Server
     uvicorn.run(
         "krypton.backend:app",
