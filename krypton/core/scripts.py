@@ -14,7 +14,6 @@
 
 import os
 
-from fastapi import FastAPI
 from typing import Callable
 
 from krypton.core.settings import settings
@@ -40,11 +39,8 @@ def setup_app_dir(path):
 
 def setup_krypton() -> Callable:
     """
-    This function takes care of all the tasks that needs to be taken care
-    before the Krypton application boots up.
-    Currently carried out tasks in this function :
-    - Setup Krypton Root Directory
-    - Setup Krypton Model Directory
+    This function takes care of all the tasks that needs to be taken care before the Krypton application boots up.
+
     :return: Callable
     """
     def _setup() -> None:
