@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     APP_PORT: int = 7000
     APP_HOSTNAME: str = '0.0.0.0'
     APP_ROOT: str = '~/krypton'
+    APP_MODEL_FOLDER = 'models'
     LOG_LEVEL: str = 'info'
     DEBUG: bool = True
 

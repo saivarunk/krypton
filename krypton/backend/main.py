@@ -17,7 +17,7 @@
 from fastapi import FastAPI
 
 from krypton.core.settings import settings
-from krypton.core.scripts import setup_krypton
+from krypton.core.scripts import setup_krypton, load_models
 from krypton.backend.api.v1.api import api_router
 
 app = FastAPI(
@@ -26,6 +26,8 @@ app = FastAPI(
 
 # add startup and cleanup events
 app.add_event_handler("startup", setup_krypton())
+app.add_event_handler("startup", load_models())
+
 
 # add router
 app.include_router(api_router, prefix=settings.API_V1_STR)
