@@ -17,11 +17,12 @@ from typing import Any
 from fastapi import APIRouter
 
 from krypton.backend.models.schema.health_check import HealthCheckResponse
+from krypton.core.constants import KRYPTON_VERSION
 
 router = APIRouter()
 
 
 @router.get("/health", response_model=HealthCheckResponse)
-def read_items() -> Any:
+def health() -> Any:
     """Simple Health Check Endpoint."""
-    return {"status": "Healthy"}
+    return {"status": "Healthy", "version": KRYPTON_VERSION}
