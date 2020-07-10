@@ -13,7 +13,8 @@
 #  limitations under the License.
 
 import copy
-import base64
+
+from typing import List
 
 from ..interfaces.krypton_model import KryptonModel
 
@@ -55,10 +56,12 @@ class ModelRepository:
             return None
         return self.__models[name]
 
+    def get_models(self) -> List[dict]:
+        return [{'model': model, 'endpoint': f'/api/v1/models/{model}/predict', 'status': 'Available'}
+                for model in self.__models]
 
     def delete_model(self, name: str):
         del self.__models[name]
-
 
 
 # This object will be used by the loader scripts and fastapi controller
