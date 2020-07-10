@@ -12,21 +12,38 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+import gc
 import os
 import importlib.util
 
 from typing import Callable
 
 from krypton.core.settings import settings
+from krypton.backend.models.interfaces.krypton_model import KryptonModel
+from krypton.backend.models.store.repository import model_repository
 
 
 def load_models_memory(model_files):
     for file in model_files:
+        model_file_name = file.get('model_file')
         model_path = file.get('abs_path')
         spec = importlib.util.spec_from_file_location("model", model_path)
         app_callable = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(app_callable)
-        # todo add model to krypton model repository
+
+        # Check for model attribute on app_callable
+        if not hasattr(app_callable, 'model'):
+            raise Exception(f"Model file {model_file_name} doesnt have a callable model")
+
+        # Check if app_callable.model is a implementation of KryptonModel
+        # If yes, call the model_repository to load model
+        if issubclass(type(app_callable.model), KryptonModel):
+            model_repository.add_model(app_callable.model)
+        else:
+            raise Exception(f"Model callable in model file: {model_file_name} is not a implementation of KryptonModel")
+
+        del app_callable, spec
+        gc.collect()
 
 
 def scan_model_files(path, model_folder):

@@ -12,7 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta, abstractmethod, abstractproperty
 
 from fastapi import Request
 
@@ -22,11 +22,24 @@ class KryptonModel(metaclass=ABCMeta):
     Krypton model server to serve the models.
     """
 
-    __model = None
-    __model_name = None
-
     def __init__(self):
         super().__init__()
+
+    @property
+    @abstractmethod
+    def model(self):
+        """
+        Abstract property to enforce the implementation attribute 'model'
+        """
+        pass
+
+    @property
+    @abstractmethod
+    def model_name(self):
+        """
+        Abstract property to enforce the implementation attribute 'model_name'
+        """
+        pass
 
     @abstractmethod
     def load_model(cls):
@@ -43,17 +56,3 @@ class KryptonModel(metaclass=ABCMeta):
         the API calls. Any subclass inheriting this class is expected to implement this method.
         """
         pass
-
-    def get_model(self):
-        """
-        This method returns the __model attribute for use by the Krypton model server
-        :return: __model object
-        """
-        return self.__model
-
-    def get_model_name(self):
-        """
-        This method returns the __model_name attribute for use by the Krypton model server
-        :return: __model_name string
-        """
-        return self.__model_name
