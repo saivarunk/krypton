@@ -263,8 +263,29 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#model-callable" class="md-nav__link">
+    model callable
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-dependencies" class="md-nav__link">
+    Model dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-changes" class="md-nav__link">
+    Apply Changes
+  </a>
   
 </li>
       
@@ -272,6 +293,30 @@
   
 </nav>
     
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../accesing-models/" title="Accesing Models" class="md-nav__link">
+      Accesing Models
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../making-predictions/" title="Making predictions" class="md-nav__link">
+      Making predictions
+    </a>
   </li>
 
     
@@ -322,8 +367,29 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#model-callable" class="md-nav__link">
+    model callable
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-dependencies" class="md-nav__link">
+    Model dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-changes" class="md-nav__link">
+    Apply Changes
+  </a>
   
 </li>
       
@@ -379,6 +445,7 @@ class SpacyDemo(KryptonModel):
 model = SpacyDemo()
 </code></pre>
 
+<p>The sample used in this model example is taken from <a href="https://spacy.io/">Spacy.io</a></p>
 <h3 id="implementation">Implementation</h3>
 <h4 id="model-class">Model Class</h4>
 <p>Krypton server expects every model script to have a class implemented based on KryptonModel base class.
@@ -400,8 +467,21 @@ This request object contains the request parameters like body, parsed form-data 
 json body and even headers of the request. Please refer Starlette's <a href="https://www.starlette.io/requests/">documentation</a> 
 for details about Request class.</li>
 <li>The developer can carryout the necessary computations for making the predictions using <code>model</code> attribute and 
-then return a valid response. This response has to be a valid response object that can be handled by FastAPI. </li>
+then return a valid response. This response has to be a valid response object that can be handled by FastAPI.</li>
 </ul>
+<h4 id="model-callable">model callable</h4>
+<p>Krypton server expects every model script to have a object with name <code>model</code> which needs to be instantiated with 
+any class, that implements <code>KryptonModel</code>.</p>
+<p>Without the <code>model</code> callable, the Krypton server would throw expcetion while booting.</p>
+<h3 id="model-dependencies">Model dependencies</h3>
+<p>The developer needs to make sure that the model specific dependencies are added to the Python environment where 
+krypton module was installed.</p>
+<p>It is always recommended to use a new virtualenv for using Krypton.</p>
+<h3 id="apply-changes">Apply Changes</h3>
+<p>Once you have added a model script, you can restart the server by using the <code>krypton server</code> command again. 
+After restarting the krypton server, all the model scripts present in the <code>~/krypton/models</code> will be loaded into 
+server.</p>
+<p>Check the next page on how to get list of models available and access the model endpoints.</p>
                 
               
               
@@ -434,6 +514,20 @@ then return a valid response. This response has to be a valid response object th
             </div>
           </a>
         
+        
+          <a href="../accesing-models/" title="Accesing Models" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Accesing Models
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>

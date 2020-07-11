@@ -7,6 +7,8 @@ nav:
     - 'index.md'
     - 'installation.md'
     - 'adding-models.md'
+    - 'accesing-models.md'
+    - 'making-predictions.md'
 repo_name: saivarunk/krypton
 repo_url: https://github.com/saivarunk/krypton
 google_analytics:

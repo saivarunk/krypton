@@ -34,6 +34,7 @@ class SpacyDemo(KryptonModel):
 
 model = SpacyDemo()
 ```
+The sample used in this model example is taken from [Spacy.io](https://spacy.io/)
 
 ### Implementation
 
@@ -55,4 +56,27 @@ This request object contains the request parameters like body, parsed form-data 
 json body and even headers of the request. Please refer Starlette's [documentation](https://www.starlette.io/requests/) 
 for details about Request class.
 - The developer can carryout the necessary computations for making the predictions using ```model``` attribute and 
-then return a valid response. This response has to be a valid response object that can be handled by FastAPI. 
+then return a valid response. This response has to be a valid response object that can be handled by FastAPI.
+
+#### model callable
+
+Krypton server expects every model script to have a object with name ```model``` which needs to be instantiated with 
+any class, that implements ```KryptonModel```.
+
+Without the ```model``` callable, the Krypton server would throw expcetion while booting.
+
+
+### Model dependencies
+
+The developer needs to make sure that the model specific dependencies are added to the Python environment where 
+krypton module was installed.
+
+It is always recommended to use a new virtualenv for using Krypton.
+
+### Apply Changes
+
+Once you have added a model script, you can restart the server by using the ```krypton server``` command again. 
+After restarting the krypton server, all the model scripts present in the ```~/krypton/models``` will be loaded into 
+server.
+  
+Check the next page on how to get list of models available and access the model endpoints.
