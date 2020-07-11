@@ -5,6 +5,8 @@ files in the directory by using the Krypton's ```KryptonModel``` class.
 
 You can use this example, which has a Spacy based implementation of Krypton Model script.
 
+### Spacy Example 
+
 ```python
 import spacy
 
@@ -33,14 +35,24 @@ class SpacyDemo(KryptonModel):
 model = SpacyDemo()
 ```
 
-- Krypton server expects every model script to have a class implemented based on KryptonModel base class.
-- It expects the class to implement ```load_model``` and ```predict``` methods - mandatory.
-- It expects the class to have the attributes ```model_name``` and ```model``` - mandatory.
-- ```predict``` method is expected to be an async function to support FastAPI's request object.
+### Implementation
+
+#### Model Class
+
+Krypton server expects every model script to have a class implemented based on KryptonModel base class.
+It can be imported from krypton root package ```from krypton import KryptonModel```
+
+- The class should implement ```load_model``` and ```predict``` methods - this is mandatory.
+- The class should have the attributes ```model_name``` and ```model``` - this is mandatory.
+- ```predict``` method is expected to be an async function to support FastAPI's request object  - this is mandatory.
 - ```load_model``` method is called during the startup of Krypton model server. The server will try to call this 
 method to load the model into memory and make it available for API requests.
+
 - ```model_name``` attribute is used by the server 
 - ```predict``` method is called during the the execution of API requests for the specific model. A single parameter, 
 `request` which is of type `Request`  from `fastapi` module is injected into the method during API calls. 
 This request object contains the request parameters like body, parsed form-data (can be used for file uploads), 
-json body and even headers of the request. Please refer Starlette's [documentation](https://www.starlette.io/requests/) for details about Request class.
+json body and even headers of the request. Please refer Starlette's [documentation](https://www.starlette.io/requests/) 
+for details about Request class.
+- The developer can carryout the necessary computations for making the predictions using ```model``` attribute and 
+then return a valid response. This response has to be a valid response object that can be handled by FastAPI. 

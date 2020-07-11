@@ -1,9 +1,13 @@
 # Installation
 
+### Using pip
+
 The krypton module can be installed from the PyPI repository using
 ```bash
 pip install krypton-ml
 ```
+
+### Starting Server
 
 Once the package is installed, you can start the Krypton Model server using Krypton CLI
 ```bash

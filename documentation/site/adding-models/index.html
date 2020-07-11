@@ -215,9 +215,62 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Adding Models
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
     <a href="./" title="Adding Models" class="md-nav__link md-nav__link--active">
       Adding Models
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spacy-example" class="md-nav__link">
+    Spacy Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-class" class="md-nav__link">
+    Model Class
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -238,6 +291,43 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spacy-example" class="md-nav__link">
+    Spacy Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-class" class="md-nav__link">
+    Model Class
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -261,6 +351,7 @@
 <p>Once the models directory is created by the cli, you can start adding models to krypton by creating model 
 files in the directory by using the Krypton's <code>KryptonModel</code> class.</p>
 <p>You can use this example, which has a Spacy based implementation of Krypton Model script.</p>
+<h3 id="spacy-example">Spacy Example</h3>
 <pre><code class="python">import spacy
 
 from krypton import KryptonModel
@@ -288,18 +379,28 @@ class SpacyDemo(KryptonModel):
 model = SpacyDemo()
 </code></pre>
 
+<h3 id="implementation">Implementation</h3>
+<h4 id="model-class">Model Class</h4>
+<p>Krypton server expects every model script to have a class implemented based on KryptonModel base class.
+It can be imported from krypton root package <code>from krypton import KryptonModel</code></p>
 <ul>
-<li>Krypton server expects every model script to have a class implemented based on KryptonModel base class.</li>
-<li>It expects the class to implement <code>load_model</code> and <code>predict</code> methods - mandatory.</li>
-<li>It expects the class to have the attributes <code>model_name</code> and <code>model</code> - mandatory.</li>
-<li><code>predict</code> method is expected to be an async function to support FastAPI's request object.</li>
-<li><code>load_model</code> method is called during the startup of Krypton model server. The server will try to call this 
-method to load the model into memory and make it available for API requests.</li>
-<li><code>model_name</code> attribute is used by the server </li>
+<li>The class should implement <code>load_model</code> and <code>predict</code> methods - this is mandatory.</li>
+<li>The class should have the attributes <code>model_name</code> and <code>model</code> - this is mandatory.</li>
+<li><code>predict</code> method is expected to be an async function to support FastAPI's request object  - this is mandatory.</li>
+<li>
+<p><code>load_model</code> method is called during the startup of Krypton model server. The server will try to call this 
+method to load the model into memory and make it available for API requests.</p>
+</li>
+<li>
+<p><code>model_name</code> attribute is used by the server </p>
+</li>
 <li><code>predict</code> method is called during the the execution of API requests for the specific model. A single parameter, 
 <code>request</code> which is of type <code>Request</code>  from <code>fastapi</code> module is injected into the method during API calls. 
 This request object contains the request parameters like body, parsed form-data (can be used for file uploads), 
-json body and even headers of the request. Please refer Starlette's <a href="https://www.starlette.io/requests/">documentation</a> for details about Request class.</li>
+json body and even headers of the request. Please refer Starlette's <a href="https://www.starlette.io/requests/">documentation</a> 
+for details about Request class.</li>
+<li>The developer can carryout the necessary computations for making the predictions using <code>model</code> attribute and 
+then return a valid response. This response has to be a valid response object that can be handled by FastAPI. </li>
 </ul>
                 
               
