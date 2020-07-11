@@ -3,6 +3,7 @@
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
+![PyPI](https://img.shields.io/pypi/v/krypton-ml?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/saivarunk/krypton?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/saivarunk/krypton?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/saivarunk/krypton?style=flat-square)
@@ -21,6 +22,7 @@ Visit [https://kryptonml.com](https://kryptonml.com) for latest documentation.
 - Any one who has experienced an issue / want to report a bug can create a issue here in [Github](https://github.com/saivarunk/krypton/issues)
 
 ### Work in progress
+- Unit and Integration Test Cases
 - Authentication for API's (Basic Auth, API Key based auth)
 - Metrics using statsd exporter
 - Configurable logging options

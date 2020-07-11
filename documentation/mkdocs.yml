@@ -14,3 +14,8 @@ repo_url: https://github.com/saivarunk/krypton
 google_analytics:
   - UA-85777603-4
   - auto
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true

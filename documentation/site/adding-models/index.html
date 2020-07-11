@@ -413,41 +413,42 @@
                   
                 
                 
-                <h1 id="adding-models">Adding Models</h1>
+                <h1 id="adding-models">Adding Models<a class="headerlink" href="#adding-models" title="Permanent link">&para;</a></h1>
 <p>Once the models directory is created by the cli, you can start adding models to krypton by creating model 
 files in the directory by using the Krypton's <code>KryptonModel</code> class.</p>
 <p>You can use this example, which has a Spacy based implementation of Krypton Model script.</p>
-<h3 id="spacy-example">Spacy Example</h3>
-<pre><code class="python">import spacy
+<h3 id="spacy-example">Spacy Example<a class="headerlink" href="#spacy-example" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">spacy</span>
 
-from krypton import KryptonModel
-from fastapi.responses import JSONResponse
+<span class="kn">from</span> <span class="nn">krypton</span> <span class="kn">import</span> <span class="n">KryptonModel</span>
+<span class="kn">from</span> <span class="nn">fastapi.responses</span> <span class="kn">import</span> <span class="n">JSONResponse</span>
 
-class SpacyDemo(KryptonModel):
+<span class="k">class</span> <span class="nc">SpacyDemo</span><span class="p">(</span><span class="n">KryptonModel</span><span class="p">):</span>
 
-    model_name = 'spacy_ner_demo'
-    model = None
+    <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;spacy_ner_demo&#39;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>
 
-    def load_model(self):
-        self.model = spacy.load(&quot;en_core_web_sm&quot;)
+    <span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
 
-    async def predict(self, request):
-        request_json = await request.json()
-        data = request_json.get('data')
-        doc = self.model(data)
-        response = {
-            'noun_phrases': [chunk.text for chunk in doc.noun_chunks],
-            'verbs': [token.lemma_ for token in doc if token.pos_ == &quot;VERB&quot;],
-            'entities': [{'ents': entity.text, 'label': entity.label_} for entity in doc.ents]
-        }
-        return JSONResponse(status_code=200, content=response)
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">request_json</span> <span class="o">=</span> <span class="k">await</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">request_json</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;noun_phrases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">chunk</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">noun_chunks</span><span class="p">],</span>
+            <span class="s1">&#39;verbs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">lemma_</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span> <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">pos_</span> <span class="o">==</span> <span class="s2">&quot;VERB&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;entities&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;ents&#39;</span><span class="p">:</span> <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">}</span> <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="p">)</span>
 
-model = SpacyDemo()
-</code></pre>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SpacyDemo</span><span class="p">()</span>
+</code></pre></div>
+
 
 <p>The sample used in this model example is taken from <a href="https://spacy.io/">Spacy.io</a></p>
-<h3 id="implementation">Implementation</h3>
-<h4 id="model-class">Model Class</h4>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<h4 id="model-class">Model Class<a class="headerlink" href="#model-class" title="Permanent link">&para;</a></h4>
 <p>Krypton server expects every model script to have a class implemented based on KryptonModel base class.
 It can be imported from krypton root package <code>from krypton import KryptonModel</code></p>
 <ul>
@@ -469,15 +470,15 @@ for details about Request class.</li>
 <li>The developer can carryout the necessary computations for making the predictions using <code>model</code> attribute and 
 then return a valid response. This response has to be a valid response object that can be handled by FastAPI.</li>
 </ul>
-<h4 id="model-callable">model callable</h4>
+<h4 id="model-callable">model callable<a class="headerlink" href="#model-callable" title="Permanent link">&para;</a></h4>
 <p>Krypton server expects every model script to have a object with name <code>model</code> which needs to be instantiated with 
 any class, that implements <code>KryptonModel</code>.</p>
 <p>Without the <code>model</code> callable, the Krypton server would throw expcetion while booting.</p>
-<h3 id="model-dependencies">Model dependencies</h3>
+<h3 id="model-dependencies">Model dependencies<a class="headerlink" href="#model-dependencies" title="Permanent link">&para;</a></h3>
 <p>The developer needs to make sure that the model specific dependencies are added to the Python environment where 
 krypton module was installed.</p>
 <p>It is always recommended to use a new virtualenv for using Krypton.</p>
-<h3 id="apply-changes">Apply Changes</h3>
+<h3 id="apply-changes">Apply Changes<a class="headerlink" href="#apply-changes" title="Permanent link">&para;</a></h3>
 <p>Once you have added a model script, you can restart the server by using the <code>krypton server</code> command again. 
 After restarting the krypton server, all the model scripts present in the <code>~/krypton/models</code> will be loaded into 
 server.</p>
