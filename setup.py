@@ -16,14 +16,27 @@
 
 from setuptools import setup, find_packages
 
+from krypton.core.constants import KRYPTON_VERSION
+
 setup(
     name='krypton-ml',
-    version='0.1.0',
-    packages=find_packages(),
+    version=KRYPTON_VERSION,
+    author="Varun Kruthiventi",
+    author_email="varunk@ieee.org",
+    description="Model Server for ML and DL Models built using FastAPI",
+    keywords="Model Serving, Model Server, Machine Learning, Deep Learning, FastAPI",
+    url="https://github.com/saivarunk/krypton",
+    project_urls={
+        "Bug Tracker": "https://github.com/saivarunk/krypton/issues",
+        "Documentation": "https://github.com/saivarunk/krypton",
+        "Source Code": "https://github.com/saivarunk/krypton",
+    },
+    packages=find_packages(exclude=['examples', 'test']),
     include_package_data=True,
     install_requires=[
         'Click',
     ],
+    python_requires='>=3.7.*',
     entry_points='''
         [console_scripts]
         krypton=krypton.cli.main:cli
