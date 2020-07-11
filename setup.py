@@ -18,12 +18,22 @@ from setuptools import setup, find_packages
 
 from krypton.core.constants import KRYPTON_VERSION
 
+
+# read the contents of your README file for long_description
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
+
 setup(
     name='krypton-ml',
     version=KRYPTON_VERSION,
     author="Varun Kruthiventi",
     author_email="varunk@ieee.org",
     description="Model Server for ML and DL Models built using FastAPI",
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     keywords="Model Serving, Model Server, Machine Learning, Deep Learning, FastAPI",
     url="https://github.com/saivarunk/krypton",
     project_urls={
@@ -31,10 +41,16 @@ setup(
         "Documentation": "https://github.com/saivarunk/krypton",
         "Source Code": "https://github.com/saivarunk/krypton",
     },
-    packages=find_packages(exclude=['examples', 'test']),
+    packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'Click',
+        "aiofiles==0.5.0",
+        "click==7.1.2",
+        "pyfiglet==0.8.post1",
+        "colored==1.4.2",
+        "fastapi==0.58.0",
+        "uvicorn==0.11.5",
+        "pydantic==1.5.1"
     ],
     python_requires='>=3.7.*',
     entry_points='''

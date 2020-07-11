@@ -41,5 +41,3 @@ app.add_event_handler("startup", load_models())
 
 # add router
 app.include_router(api_router, prefix=settings.API_V1_STR)
-# add Krypton UI
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
