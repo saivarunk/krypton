@@ -17,7 +17,7 @@
     
     
       
-        <title>Making predictions - Krypton - ML/DL Model Server</title>
+        <title>Examples - Krypton - ML/DL Model Server</title>
       
     
     
@@ -55,7 +55,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#make-prediction-on-a-model" class="md-skip">
+        <a href="#examples" class="md-skip">
           Skip to content
         </a>
       
@@ -83,7 +83,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Making predictions
+              Examples
             
           </span>
         </div>
@@ -229,6 +229,18 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../making-predictions/" title="Making predictions" class="md-nav__link">
+      Making predictions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -236,21 +248,25 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Making predictions
+        Examples
         <span class="md-nav__icon md-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
         </span>
       </label>
     
-    <a href="./" title="Making predictions" class="md-nav__link md-nav__link--active">
-      Making predictions
+    <a href="./" title="Examples" class="md-nav__link md-nav__link--active">
+      Examples
     </a>
     
       
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -262,29 +278,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#make-prediction-on-a-model" class="md-nav__link">
-    Make Prediction on a model
+  <a href="#docker" class="md-nav__link">
+    Docker
   </a>
-  
-    <nav class="md-nav" aria-label="Make Prediction on a model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#request" class="md-nav__link">
-    Request
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sample-response" class="md-nav__link">
-    Sample Response
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -292,18 +288,6 @@
   
 </nav>
     
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../examples/" title="Examples" class="md-nav__link">
-      Examples
-    </a>
   </li>
 
     
@@ -321,6 +305,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon">
@@ -331,29 +317,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#make-prediction-on-a-model" class="md-nav__link">
-    Make Prediction on a model
+  <a href="#docker" class="md-nav__link">
+    Docker
   </a>
-  
-    <nav class="md-nav" aria-label="Make Prediction on a model">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#request" class="md-nav__link">
-    Request
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sample-response" class="md-nav__link">
-    Sample Response
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -369,7 +335,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/saivarunk/krypton/edit/master/docs/making-predictions.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/saivarunk/krypton/edit/master/docs/examples.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -377,54 +343,53 @@
                   
                 
                 
-                  <h1>Making predictions</h1>
-                
-                <h3 id="make-prediction-on-a-model">Make Prediction on a model<a class="headerlink" href="#make-prediction-on-a-model" title="Permanent link">&para;</a></h3>
-<p>Once the krypton server is up and running, you can access the list of models by making a GET request on this endpoint.</p>
-<h4 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;http://&lt;hostname&gt;:&lt;port&gt;/api/v1/models/&lt;model_name&gt;/predict&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
---data-raw <span class="s1">&#39;{</span>
-<span class="s1">    &quot;data&quot;: &quot;When Sebastian Thrun started working on self-driving cars at Google in 2007, few people outside of the company took him seriously.&quot;</span>
-<span class="s1">}&#39;</span>
+                <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<p>Krypton can be run inside a Docker container. Below is one example which uses our <code>spacy_ner_example</code> model.</p>
+<p><code>Dockerfile</code></p>
+<div class="codehilite"><pre><span></span><code><span class="k">FROM</span> <span class="s">python:3.8.3-alpine3.12</span>
+
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="c"># Install system dependencies for uvloop</span>
+<span class="k">RUN</span> apk update <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> apk add --virtual build-dependencies <span class="se">\</span>
+        build-base <span class="se">\</span>
+        gcc
+
+<span class="c"># Copy your model script to any dirrectory</span>
+<span class="k">COPY</span> spacy.py /app/krypton/models/
+
+<span class="c"># Install krypton</span>
+<span class="k">RUN</span> pip install krypton-ml
+
+<span class="c"># install spacy and language model</span>
+<span class="k">RUN</span> pip install spacy
+<span class="k">RUN</span> python -m spacy download en_core_web_sm
+
+<span class="k">EXPOSE</span><span class="s"> 7000</span>
+
+<span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;krypton&quot;</span><span class="p">,</span> <span class="s2">&quot;server&quot;</span><span class="p">]</span>
 </code></pre></div>
 
 
-<h4 id="sample-response">Sample Response<a class="headerlink" href="#sample-response" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;noun_phrases&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;Sebastian Thrun&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;self-driving cars&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Google&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;few people&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;the company&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;him&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;verbs&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;start&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;work&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;drive&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;take&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;entities&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;ents&quot;</span><span class="p">:</span> <span class="s2">&quot;Sebastian Thrun&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSON&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;ents&quot;</span><span class="p">:</span> <span class="s2">&quot;Google&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;ORG&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;ents&quot;</span><span class="p">:</span> <span class="s2">&quot;2007&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;DATE&quot;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<p>Make sure that you have a copy of <a href="https://github.com/saivarunk/krypton/blob/develop/samples/spacy.py"><code>spacy.py</code></a>
+file in the current directory.</p>
+<p>Build the Docker image</p>
+<div class="codehilite"><pre><span></span><code>docker build -t krypton-spacy .
 </code></pre></div>
 
 
-<p>The sample used in this model example is taken from <a href="https://spacy.io/">Spacy.io</a></p>
+<p>Run the Docker Image</p>
+<div class="codehilite"><pre><span></span><code>docker run -p <span class="m">7000</span>:7000 -e <span class="nv">KRYPTON_APP_ROOT</span><span class="o">=</span>/app/krypton -t krypton-spacy
+</code></pre></div>
+
+
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>You can observe that we are passing a variable <code>KRYPTON_APP_ROOT</code> with value /app/krypton. Since in the 
+Dockerfile we have copied the model to a custom directory, we are changing Krypton's default app root folder.</p>
+</div>
                 
               
               
@@ -443,7 +408,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../accesing-models/" title="Accesing Models" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../making-predictions/" title="Making predictions" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -452,25 +417,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Accesing Models
+                Making predictions
               </div>
             </div>
           </a>
         
-        
-          <a href="../examples/" title="Examples" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Examples
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
         
       </nav>
     </div>
