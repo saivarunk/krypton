@@ -370,45 +370,47 @@
                 <h3 id="make-prediction-on-a-model">Make Prediction on a model</h3>
 <p>Once the krypton server is up and running, you can access the list of models by making a GET request on this endpoint.</p>
 <h4 id="request">Request</h4>
-<pre><code class="bash">curl --location --request POST 'http://&lt;hostname&gt;:&lt;port&gt;/api/v1/models/&lt;model_name&gt;/predict' \
---header 'Content-Type: application/json' \
---data-raw '{
-    &quot;data&quot;: &quot;When Sebastian Thrun started working on self-driving cars at Google in 2007, few people outside of the company took him seriously.&quot;
-}'
-</code></pre>
+<div class="codehilite"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;http://&lt;hostname&gt;:&lt;port&gt;/api/v1/models/&lt;model_name&gt;/predict&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+--data-raw <span class="s1">&#39;{</span>
+<span class="s1">    &quot;data&quot;: &quot;When Sebastian Thrun started working on self-driving cars at Google in 2007, few people outside of the company took him seriously.&quot;</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
+
 
 <h4 id="sample-response">Sample Response</h4>
-<pre><code class="json">{
-    &quot;noun_phrases&quot;: [
-        &quot;Sebastian Thrun&quot;,
-        &quot;self-driving cars&quot;,
-        &quot;Google&quot;,
-        &quot;few people&quot;,
-        &quot;the company&quot;,
-        &quot;him&quot;
-    ],
-    &quot;verbs&quot;: [
-        &quot;start&quot;,
-        &quot;work&quot;,
-        &quot;drive&quot;,
-        &quot;take&quot;
-    ],
-    &quot;entities&quot;: [
-        {
-            &quot;ents&quot;: &quot;Sebastian Thrun&quot;,
-            &quot;label&quot;: &quot;PERSON&quot;
-        },
-        {
-            &quot;ents&quot;: &quot;Google&quot;,
-            &quot;label&quot;: &quot;ORG&quot;
-        },
-        {
-            &quot;ents&quot;: &quot;2007&quot;,
-            &quot;label&quot;: &quot;DATE&quot;
-        }
-    ]
-}
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;noun_phrases&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Sebastian Thrun&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;self-driving cars&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Google&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;few people&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;the company&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;him&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;verbs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;start&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;work&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;drive&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;take&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;entities&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;ents&quot;</span><span class="p">:</span> <span class="s2">&quot;Sebastian Thrun&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSON&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;ents&quot;</span><span class="p">:</span> <span class="s2">&quot;Google&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;ORG&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;ents&quot;</span><span class="p">:</span> <span class="s2">&quot;2007&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;DATE&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
 
 <p>The sample used in this model example is taken from <a href="https://spacy.io/">Spacy.io</a></p>
                 

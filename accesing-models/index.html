@@ -375,21 +375,22 @@
 <h3 id="get-list-of-models">Get List of Models</h3>
 <p>Once the krypton server is up and running, you can access the list of models by making a GET request on this endpoint.</p>
 <h4 id="request">Request</h4>
-<pre><code class="bash">curl --location --request GET 'http://&lt;hostname&gt;:&lt;port&gt;/api/v1/models'
-</code></pre>
+<div class="codehilite"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;http://&lt;hostname&gt;:&lt;port&gt;/api/v1/models&#39;</span>
+</code></pre></div>
+
 
 <h4 id="sample-response">Sample Response</h4>
-<pre><code class="json">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: [
-        {
-            &quot;model&quot;: &quot;spacy_ner_demo&quot;,
-            &quot;endpoint&quot;: &quot;/api/v1/models/spacy_ner_demo/predict&quot;,
-            &quot;status&quot;: &quot;Available&quot;
-        }
-    ]
-}
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;success&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;spacy_ner_demo&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/models/spacy_ner_demo/predict&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Available&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
