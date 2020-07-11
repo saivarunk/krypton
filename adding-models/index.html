@@ -413,11 +413,11 @@
                   
                 
                 
-                <h1 id="adding-models">Adding Models</h1>
+                <h1 id="adding-models">Adding Models<a class="headerlink" href="#adding-models" title="Permanent link">&para;</a></h1>
 <p>Once the models directory is created by the cli, you can start adding models to krypton by creating model 
 files in the directory by using the Krypton's <code>KryptonModel</code> class.</p>
 <p>You can use this example, which has a Spacy based implementation of Krypton Model script.</p>
-<h3 id="spacy-example">Spacy Example</h3>
+<h3 id="spacy-example">Spacy Example<a class="headerlink" href="#spacy-example" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">spacy</span>
 
 <span class="kn">from</span> <span class="nn">krypton</span> <span class="kn">import</span> <span class="n">KryptonModel</span>
@@ -447,8 +447,8 @@ files in the directory by using the Krypton's <code>KryptonModel</code> class.</
 
 
 <p>The sample used in this model example is taken from <a href="https://spacy.io/">Spacy.io</a></p>
-<h3 id="implementation">Implementation</h3>
-<h4 id="model-class">Model Class</h4>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<h4 id="model-class">Model Class<a class="headerlink" href="#model-class" title="Permanent link">&para;</a></h4>
 <p>Krypton server expects every model script to have a class implemented based on KryptonModel base class.
 It can be imported from krypton root package <code>from krypton import KryptonModel</code></p>
 <ul>
@@ -470,15 +470,15 @@ for details about Request class.</li>
 <li>The developer can carryout the necessary computations for making the predictions using <code>model</code> attribute and 
 then return a valid response. This response has to be a valid response object that can be handled by FastAPI.</li>
 </ul>
-<h4 id="model-callable">model callable</h4>
+<h4 id="model-callable">model callable<a class="headerlink" href="#model-callable" title="Permanent link">&para;</a></h4>
 <p>Krypton server expects every model script to have a object with name <code>model</code> which needs to be instantiated with 
 any class, that implements <code>KryptonModel</code>.</p>
 <p>Without the <code>model</code> callable, the Krypton server would throw expcetion while booting.</p>
-<h3 id="model-dependencies">Model dependencies</h3>
+<h3 id="model-dependencies">Model dependencies<a class="headerlink" href="#model-dependencies" title="Permanent link">&para;</a></h3>
 <p>The developer needs to make sure that the model specific dependencies are added to the Python environment where 
 krypton module was installed.</p>
 <p>It is always recommended to use a new virtualenv for using Krypton.</p>
-<h3 id="apply-changes">Apply Changes</h3>
+<h3 id="apply-changes">Apply Changes<a class="headerlink" href="#apply-changes" title="Permanent link">&para;</a></h3>
 <p>Once you have added a model script, you can restart the server by using the <code>krypton server</code> command again. 
 After restarting the krypton server, all the model scripts present in the <code>~/krypton/models</code> will be loaded into 
 server.</p>

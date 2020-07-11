@@ -367,9 +367,9 @@
                 
                   <h1>Making predictions</h1>
                 
-                <h3 id="make-prediction-on-a-model">Make Prediction on a model</h3>
+                <h3 id="make-prediction-on-a-model">Make Prediction on a model<a class="headerlink" href="#make-prediction-on-a-model" title="Permanent link">&para;</a></h3>
 <p>Once the krypton server is up and running, you can access the list of models by making a GET request on this endpoint.</p>
-<h4 id="request">Request</h4>
+<h4 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;http://&lt;hostname&gt;:&lt;port&gt;/api/v1/models/&lt;model_name&gt;/predict&#39;</span> <span class="se">\</span>
 --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
 --data-raw <span class="s1">&#39;{</span>
@@ -378,7 +378,7 @@
 </code></pre></div>
 
 
-<h4 id="sample-response">Sample Response</h4>
+<h4 id="sample-response">Sample Response<a class="headerlink" href="#sample-response" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;noun_phrases&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;Sebastian Thrun&quot;</span><span class="p">,</span>
