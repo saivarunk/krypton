@@ -30,4 +30,7 @@ location where you want krypton server to setup the ```models``` directory.
 
 The server would be started at ```PORT``` 7000 by default, and it can be accessed at ```http://localhost:7000```
 
+!!! Info
+    The krypton server's port can be changed by setting a custom port number to ```KRYPTON_APP_ROOT``` env variable.
+
 ![Krypton CLI](assets/krypton_cli.png)

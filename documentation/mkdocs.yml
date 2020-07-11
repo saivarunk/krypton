@@ -9,6 +9,7 @@ nav:
     - 'adding-models.md'
     - 'accesing-models.md'
     - 'making-predictions.md'
+    - 'examples.md'
 repo_name: saivarunk/krypton
 repo_url: https://github.com/saivarunk/krypton
 google_analytics:

@@ -8,7 +8,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/saivarunk/krypton?style=flat-square)
 [![Agile Board](https://img.shields.io/badge/YouTrack-Agile%20Board-brightgreen?style=flat-square)](https://krypton.myjetbrains.com/youtrack/agiles/115-0/116-2)
 
-- Model Server for ML and DL Models built using FastAPI
+- Model Server for ML and DL Models built using [FastAPI](https://fastapi.tiangolo.com/)
 - Deploy Machine Learning and Deep Learning models using simple Python scripts
 
 <img src="assets/krypton_small.png" width="700">
