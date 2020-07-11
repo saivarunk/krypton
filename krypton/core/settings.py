@@ -27,7 +27,7 @@ class Settings(BaseSettings):
 
     class Config:
         """Config class is used to configure env reading parameters"""
-        env_prefix = 'KRYPTON'
+        env_prefix = 'KRYPTON_'
         case_sensitive = True
 
 

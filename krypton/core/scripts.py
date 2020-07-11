@@ -64,7 +64,7 @@ def setup_app_dir(path, model_folder):
     if path == '~/krypton':
         path = os.path.join(os.path.expanduser('~'), 'krypton')
 
-    # create a folder for model yaml specs to be added by the users
+    # create a folder for model scripts to be added by the users
     models_path = os.path.join(path, model_folder)
 
     if not os.path.isdir(path):
