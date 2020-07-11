@@ -1,7 +1,12 @@
-site_name: Krypton
+site_name: Krypton - ML/DL Model Server
 theme:
   name: material
   language: en
+site_author: Varun Kruthiventi
+nav:
+    - 'index.md'
+    - 'installation.md'
+    - 'adding-models.md'
 repo_name: saivarunk/krypton
 repo_url: https://github.com/saivarunk/krypton
 google_analytics:
