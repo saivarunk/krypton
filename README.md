@@ -2,6 +2,7 @@
 
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsaivarunk%2Fkrypton.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsaivarunk%2Fkrypton?ref=badge_shield)
 
 ![PyPI](https://img.shields.io/pypi/v/krypton-ml?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/saivarunk/krypton?style=flat-square)
@@ -30,7 +31,9 @@ Visit [https://kryptonml.com](https://kryptonml.com) for latest documentation.
 ### License
 Krypton ML uses Apache License 2.0. Find the license [here](https://github.com/saivarunk/krypton/blob/develop/LICENSE)
 
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsaivarunk%2Fkrypton.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsaivarunk%2Fkrypton?ref=badge_large)
+
 ### About
 - Author: [Varun Kruthiventi](https://varunk.me)
 - Email: [varunk@ieee.org](mailto:varunk@ieee.org)
-
