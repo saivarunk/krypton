@@ -49,7 +49,7 @@ setup(
         "pyfiglet==0.8.post1",
         "colored==1.4.2",
         "fastapi==0.58.0",
-        "uvicorn==0.11.5",
+        "uvicorn==0.11.7",
         "pydantic==1.5.1"
     ],
     python_requires='>=3.7.*',
