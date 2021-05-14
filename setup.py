@@ -50,7 +50,7 @@ setup(
         "colored==1.4.2",
         "fastapi==0.58.0",
         "uvicorn==0.11.7",
-        "pydantic==1.5.1"
+        "pydantic==1.6.2"
     ],
     python_requires='>=3.7.*',
     entry_points='''
